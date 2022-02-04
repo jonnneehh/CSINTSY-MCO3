@@ -12,7 +12,8 @@ public class Main {
 		int daysSinceLastDose = c.askDaysSinceLastDose();
 		String vaccineType = c.askVaccineType();
 		boolean noSymptoms = c.askIfNoSymptoms();
+		
 		System.out.println(c.isFullyVaccinated(doses, vaccineType, daysSinceLastDose, noSymptoms));
+	
 	}
-
 }
