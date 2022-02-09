@@ -11,7 +11,7 @@ isFullDoseOfValidVaccines(Doses, Vaccine):-
     Doses >= 2, isValidVaccine(Vaccine).
 
 isLastDose14DaysBefore(DaysSinceLastDose):-
-    DaysSinceLastDose =< 14.
+    DaysSinceLastDose >= 14.
 
 isNoSymptoms(true):- true.
 isNoSymptoms(false) :- false.
@@ -72,7 +72,7 @@ mustProvideProofVaccination(false) :- false.
 mustProvideNegativeMolecularTest(true) :- true.
 mustProvideNegativeMolecularTest(false) :- false.
 
-/* IF traveller qualifies as fully vaccinated THEN traveller must provide an ArriveCan receipt with letter I, V, or A, beside the traveller’s name */
+/* IF traveller qualifies as fully vaccinated THEN traveller must provide an ArriveCan receipt with letter I, V, or A, beside the travellerâ€™s name */
 mustProvideArriveCanReceipt(true) :- true.
 mustProvideArriveCanReceipt(false) :- false.
 
