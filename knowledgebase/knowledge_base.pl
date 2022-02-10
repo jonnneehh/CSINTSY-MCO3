@@ -19,11 +19,14 @@ isInList([H|T], H).
 isInList([_|T], H) :- isInList(T, H).
 
 isValidVaccine(X):-
-    ValidVaccines = [pfizer, astrazeneca, jannsen, moderna, sinovac],
+    ValidVaccines = [pfizer, covaxin, astrazeneca, jannsen, moderna, sinovac, sinopharm],
     isInList(ValidVaccines, X).
 
 isFullDoseOfValidVaccines(Doses, Vaccine):-
     Doses >= 2, isValidVaccine(Vaccine).
+
+isFullDoseOfValidVaccines(Doses, 'jannsen') :-
+    Doses >= 1.
 
 isLastDose14DaysBefore(DaysSinceLastDose):-
     DaysSinceLastDose >= 14.
