@@ -37,7 +37,7 @@ public class ConsoleUI {
 		return age;
 	}
 
-	// this question will only be asked if user is < 12 years old
+	// this question will only be asked if user is < 18 years old
 	public boolean askIsAccompanied() {
 		Scanner sc = new Scanner(System.in);
 
@@ -61,11 +61,11 @@ public class ConsoleUI {
 		return hasAdult;
 	}
 
-	// this question will only be asked if user is < 12 years old
+	// this question will only be asked if user is < 18 years old
 	public boolean askHasTestedPositive() {
 		Scanner sc = new Scanner(System.in);
 
-		System.out.print("Have you tested positive for COVID-19 (15 to 180 days prior to your entry to Canada) (Y/n): ");
+		System.out.print("Do you have a positive COVID-19 test (taken 11 to 180 days prior to your entry to Canada) (Y/n): ");
 		char response;
 		boolean wasPositive = false;
 
@@ -196,15 +196,19 @@ public class ConsoleUI {
 	public boolean askIsEmergencyProvider() {
 		Scanner sc = new Scanner(System.in);
 
-		System.out.print("Are you an emergency service provider? (Y/n): ");
+		System.out.print("Do you qualify as any of the following occupations?:\n" +
+				"\t - Marine Crew Member\n" +
+				"\t - Work with medical equipment or devices\n" +
+				"\t - In the agricultural or food processing industry\n" +
+				"Response (Y/n): ");
 		char response;
-		boolean isEmergency = false;
+		boolean isExemptWorker = false;
 
 		do {
 			response = sc.nextLine().charAt(0);
 
 			if(response == 'Y' || response == 'y') {
-				isEmergency = true;
+				isExemptWorker = true;
 			}
 
 			if(response != 'Y' && response != 'y' && response != 'N' && response != 'n') {
@@ -213,31 +217,7 @@ public class ConsoleUI {
 
 		} while(response != 'Y' && response != 'y' && response != 'N' && response != 'n');
 
-		return isEmergency;
-	}
-
-	// this question will only be asked if user does not have a permit
-	public boolean askHasNationalInterest() {
-		Scanner sc = new Scanner(System.in);
-
-		System.out.print("Do you have a national interest exemption? (Y/n): ");
-		char response;
-		boolean isNationalInterest = false;
-
-		do {
-			response = sc.nextLine().charAt(0);
-
-			if(response == 'Y' || response == 'y') {
-				isNationalInterest = true;
-			}
-
-			if(response != 'Y' && response != 'y' && response != 'N' && response != 'n') {
-				System.out.println("\nPlease enter Y or N as a response");
-			}
-
-		} while(response != 'Y' && response != 'y' && response != 'N' && response != 'n');
-
-		return isNationalInterest;
+		return isExemptWorker;
 	}
 
 	// OUTPUTS
@@ -255,5 +235,47 @@ public class ConsoleUI {
 		}
 		
 		return isFullyVaccinated;
+	}
+
+	public void printFullyVaccinatedRequirements() {
+		System.out.println("You must prepare the following: \n" +
+				"\t - Submit your travel details to ArriveCan\n" +
+				"\t - Proof of vaccination that was uploaded to ArriveCan\n" +
+				"\t\t - If proof is not in English or French, travelers must secure a certified translation \n" +
+				"\t\t in English or French. Translation must include the stamp or membership number \n" +
+				"\t\t of a professional translation association.\n" +
+				"\t - COVID-19 Negative Molecular Test Result OR\n" +
+				"\t\t - proof of a previous positive test result taken between 10 and 180 days ago\n" +
+				"\t\t - proof must include the following information\n" +
+				"\t\t\t - Traveller name and birthdate\n" +
+				"\t\t\t - Name and civic address of the laboratory/clinic/facility that administered the test\n" +
+				"\t\t\t - The date on which the test was taken\n" +
+				"\t\t\t - The type of test taken\n" +
+				"\t\t\t - The test result" +
+				"\t - ArriveCan Receipt with letter I, or V, or A beside the traveler's name\n" +
+				"\t - Have a quarantine plan" +
+				"\t - Travel document that was entered in ArriveCan (i.e. passport)\n" +
+				"\t - Register in advance for arrival testing");
+
+		System.out.println("Upon Arrival in Canada: \n" +
+				"\t - You may be randomly selected for a mandatory arrival test, \n" +
+				"\t   if you hadn't registered for arrival testing, so travellers are\n" +
+				"\t   strongly encouraged to pre-register for arrival testing to avoid delays\n" +
+				"\t - Take the arrival test as directed on the day you enter Canada. \n" +
+				"\t   The test may be administered at the airport or you may receive a \n" +
+				"\t   self-swab kit at the airport or land border to complete within 24 \n" +
+				"\t   hours after entering Canada\n" +
+				"\t - You can take connecting flights to your place of quarantine\n" +
+				"\t - You must quarantine in a suitable place while you await the arrival test result\n" +
+				"\t - You are not required to pay a fee for the arrival test\n" +
+				"\t - If you registered for Arrival Testing in advance: \n" +
+				"\t - If you receive a positive test result, you will be asked to quarantine for 10 days more\n" +
+				"\t - If you receive a negative result:\n" +
+				"\t\t - You may leave quarantine\n" +
+				"\t\t - Follow public health measures\n" +
+				"\t\t - wear a mask when in public spaces for the first 14 days after your entry;\n" +
+				"\t\t - maintain a list of all close contacts and locations you visit for your first 14 days in Canada\n" +
+				"\t\t - monitor yourself for signs and symptoms\n" +
+				"\t\t - keep copies of your proof of vaccination and pre-arrival tests for 14 days");
 	}
 }
