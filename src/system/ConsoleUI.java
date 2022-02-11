@@ -85,7 +85,7 @@ public class ConsoleUI {
 		return wasPositive;
 	}
 
-	public int askVaccineType() {
+	public String askVaccineType() {
 		Scanner sc = new Scanner(System.in);
 
 		// 1 - 6 need 2 doses, 7 needs 1, and 8 - 9 are not permitted to travel
@@ -102,8 +102,20 @@ public class ConsoleUI {
 				"Response: ");
 
 		int response = sc.nextInt();
-	
-		return response;
+		
+		String vaccine;
+		
+		if(response == 1) vaccine = "astrazeneca";
+		else if (response == 2) vaccine = "covaxin";
+		else if (response == 3) vaccine = "moderna";
+		else if (response == 4) vaccine = "pfizer";
+		else if (response == 5) vaccine = "sinopharm";
+		else if (response == 6) vaccine = "sinovac";
+		else if (response == 7) vaccine = "jannsen";
+		else if (response == 8) vaccine = "other";
+		else vaccine = "none";
+		
+		return vaccine;
 	}
 	
 	public int askNumOfDoses() {
