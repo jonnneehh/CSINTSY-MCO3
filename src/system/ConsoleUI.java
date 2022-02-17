@@ -240,38 +240,33 @@ public class ConsoleUI {
 
 		Predicates p = new Predicates();
 		boolean isAdult = !p.minor(age) && !p.underFive(age);
+		boolean isFullyVaccinated = p.fullyVaccinated(doses, vaccine, daysSinceLastDose, noSymptoms);
+		boolean isForeignWorker = !isCanadian && employedInCanada;
 
 		if (isAdult) {
-			if (p.fullyVaccinated(doses, vaccine, daysSinceLastDose, noSymptoms)) {
-				printTravelToCanada(true);
+			if(isForeignWorker) {
+				printForeignWorker(isCanadian, isFullyVaccinated, hasWorkPermit, isExemptedWorker);
+			}
+			else if (isFullyVaccinated) {
 				printFullyVaccinatedRequirements(isCanadian);
-			} else {
-				if (!isExemptedWorker) {
-					printTravelToCanada(false);
-				} else {
-					printTravelToCanada(true);
-					printFullyVaccinatedRequirements(isCanadian);
-				}
+				System.out.println("You are QUALIFIED to visit Canada");
+			}
+			else {
+				System.out.println("You are NOT QUALIFIED to visit Canada\n"
+						+ "You are currently unvaccinated and not an exempted worker");
 			}
 		} else {
 			if (isAccompanied) {
-				printTravelToCanada(true);
 				printPositiveCOVIDTest(age, wasPositive);
 				printFullyVaccinatedRequirements(isCanadian);
+				System.out.println("You are QUALIFIED to visit Canada");
 			} else {
-				printTravelToCanada(false);
+				System.out.println("You are NOT QUALIFIED to visit Canada\n"
+						+ "Please have an adult to accompany you");
 			}
 		}
 	}
-	
-	private void printTravelToCanada(boolean canTravel) {
-		if(canTravel) {
-			System.out.println("You can travel to Canada!");
-		} else {
-			System.out.println("You are ineligible to travel to Canada");
-		}
-	}
-	
+
 	private void printFullyVaccinatedRequirements(boolean isCanadian) {
 
 		System.out.println("You must prepare the following: \n" + "\t - Submit your travel details to ArriveCan\n"
@@ -314,6 +309,22 @@ public class ConsoleUI {
 				+ "\t\t - keep copies of your proof of vaccination and pre-arrival tests for 14 days");
 	}
 
+	private void printForeignWorker(boolean isCanadian, boolean isFullyVaccinated, boolean hasPermit,
+			boolean isExemptWorker) {
+
+		if (isFullyVaccinated && hasPermit) {
+			printFullyVaccinatedRequirements(isCanadian);
+			System.out.println("You are QUALIFIED to visit Canada");
+		} else {
+			if (isExemptWorker == true) {
+				printFullyVaccinatedRequirements(isCanadian);
+				System.out.println("You are QUALIFIED to visit Canada");
+			} else
+				System.out.println("You are NOT QUALIFIED to visit Canada\n"
+						+ "Only exempted workers without a permit are allowed to visit Canada");
+		}
+	}
+
 	private void printPositiveCOVIDTest(int age, boolean wasPositive) {
 		Predicates p = new Predicates();
 
@@ -331,9 +342,13 @@ public class ConsoleUI {
 					+ "\t\t - is 65 years of age or older \n" + "\t - Limit contact with others \n"
 					+ "\t - Remain with your fully vaccinated parent or guardian, as much as possible \n"
 					+ "\t - Wear a mask and physically distance when in contact with non-household members");
+		} else if (p.minor(age)) {
+			System.out.println("You are required to take the following tests: \n" + "\t - Pre-entry Test\n"
+					+ "\t - Arrival Test\n" + "\t - Day-8 test");
 		}
-		if (p.minor(age)) {
-			System.out.println("You are also required to take the following tests: \n" + "\t - Pre-entry Test\n"
+
+		if (p.underFive(age)) {
+			System.out.println("You are EXEMPTED from the following tests: \n" + "\t - Pre-entry Test\n"
 					+ "\t - Arrival Test\n" + "\t - Day-8 test");
 		}
 	}
