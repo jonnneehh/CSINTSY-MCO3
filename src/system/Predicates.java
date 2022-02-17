@@ -8,7 +8,7 @@ public class Predicates {
 	public void compile() {
 		
 		//CHANGE THIS TO YOUR OWN DIRECTORY
-		String t = "consult('c:/users/dell/documents/programs/java/csintsy-mco3/knowledgebase/knowledge_base.pl')";
+		String t = "consult('c:/programs/java/csintsy-mco3/knowledgebase/knowledge_base.pl')";
 		Query q = new Query(t);
 		
 		q.hasSolution(t);

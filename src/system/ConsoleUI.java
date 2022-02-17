@@ -200,7 +200,7 @@ public class ConsoleUI {
 			}
 
 		} while(response != 'Y' && response != 'y' && response != 'N' && response != 'n');
-
+		
 		return hasPermit;
 	}
 
@@ -231,7 +231,7 @@ public class ConsoleUI {
 
 		return isExemptWorker;
 	}
-
+	
 	// OUTPUTS
 	public boolean isFullyVaccinated(int doses, String vaccine, int daysSinceLastDose, boolean noSymptoms) {
 		Predicates p = new Predicates();
@@ -239,6 +239,7 @@ public class ConsoleUI {
 		
 		if(p.fullyVaccinated(doses, vaccine, daysSinceLastDose, noSymptoms)){
 			System.out.println("You are fully vaccinated");
+			printFullyVaccinatedRequirements();
 			isFullyVaccinated = true;
 		}
 		else {

@@ -14,6 +14,7 @@ public class Main {
 		boolean noSymptoms = c.askIfNoSymptoms();
 		
 		System.out.println(c.isFullyVaccinated(doses, vaccineType, daysSinceLastDose, noSymptoms));
-	
+		
+		
 	}
 }
