@@ -239,7 +239,6 @@ public class ConsoleUI {
 		
 		if(p.fullyVaccinated(doses, vaccine, daysSinceLastDose, noSymptoms)){
 			System.out.println("You are fully vaccinated");
-			printFullyVaccinatedRequirements();
 			isFullyVaccinated = true;
 		}
 		else {
