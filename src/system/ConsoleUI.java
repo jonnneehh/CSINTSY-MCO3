@@ -295,6 +295,18 @@ public class ConsoleUI {
 				"\t\t - keep copies of your proof of vaccination and pre-arrival tests for 14 days");
 	}
 
+	public void printForeignWorker(boolean isCanadian, boolean isFullyVaccinated, boolean isEmployed, boolean hasPermit, boolean isExemptWorker){
+
+		if (isFullyVaccinated == true && isEmployed == true && hasPermit == true )
+			printFullyVaccinatedRequirements(isCanadian);
+
+		if (isFullyVaccinated == false && hasPermit == false && isExemptWorker == true)
+			printFullyVaccinatedRequirements(isCanadian);
+		else
+			System.out.println("You are NOT qualified to visit Canada");
+
+	}
+
 	public void printPositiveCOVIDTest(int age, boolean wasPositive){
 
 		if(age < 18 && wasPositive == true){
