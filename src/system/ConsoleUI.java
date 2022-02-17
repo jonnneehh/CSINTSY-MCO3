@@ -297,13 +297,20 @@ public class ConsoleUI {
 
 	public void printForeignWorker(boolean isCanadian, boolean isFullyVaccinated, boolean isEmployed, boolean hasPermit, boolean isExemptWorker){
 
-		if (isFullyVaccinated == true && isEmployed == true && hasPermit == true )
-			printFullyVaccinatedRequirements(isCanadian);
-
-		if (isFullyVaccinated == false && hasPermit == false && isExemptWorker == true)
-			printFullyVaccinatedRequirements(isCanadian);
-		else
-			System.out.println("You are NOT qualified to visit Canada");
+		if (isFullyVaccinated == true){
+			if (isEmployed == true && hasPermit == true){
+				System.out.println("You are QUALIFIED to visit Canada");
+				printFullyVaccinatedRequirements(isCanadian);
+			}
+		}
+		else {
+			if (hasPermit == false && isExemptWorker == true){
+				System.out.println("You are QUALIFIED to visit Canada");
+				printFullyVaccinatedRequirements(isCanadian);
+			}
+			else
+				System.out.println("You are NOT QUALIFIED to visit Canada");
+		}
 
 	}
 
