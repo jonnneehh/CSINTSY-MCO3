@@ -302,6 +302,10 @@ public class ConsoleUI {
 				System.out.println("You are QUALIFIED to visit Canada");
 				printFullyVaccinatedRequirements(isCanadian);
 			}
+			else if (hasPermit == true && isExemptWorker == false) {
+				System.out.println("You are QUALIFIED to visit Canada");
+				printFullyVaccinatedRequirements(isCanadian);
+			}
 		}
 		else {
 			if (hasPermit == false && isExemptWorker == true) {
@@ -311,7 +315,6 @@ public class ConsoleUI {
 			else
 				System.out.println("You are NOT QUALIFIED to visit Canada");
 		}
-
 	}
 
 	public void printPositiveCOVIDTest(int age, boolean wasPositive){
