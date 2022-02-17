@@ -313,8 +313,15 @@ public class ConsoleUI {
 				"\t - Remain with your fully vaccinated parent or guardian, as much as possible \n" +
 				"\t - Wear a mask and physically distance when in contact with non-household members");
 		}
-		else if (age < 18){
+		else if (age < 18 && age > 5){
 			System.out.println("You are required to take the following tests: \n" +
+					"\t - Pre-entry Test\n" +
+					"\t - Arrival Test\n" +
+					"\t - Day-8 test");
+		}
+
+		if(age < 5){
+			System.out.println("You are EXEMPTED to take the following tests: \n" +
 					"\t - Pre-entry Test\n" +
 					"\t - Arrival Test\n" +
 					"\t - Day-8 test");
