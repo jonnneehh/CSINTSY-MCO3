@@ -250,13 +250,14 @@ public class ConsoleUI {
 		return isFullyVaccinated;
 	}
 
-	public void printFullyVaccinatedRequirements() {
+	public void printFullyVaccinatedRequirements(boolean isCanadian) {
+
 		System.out.println("You must prepare the following: \n" +
 				"\t - Submit your travel details to ArriveCan\n" +
 				"\t - Proof of vaccination that was uploaded to ArriveCan\n" +
 				"\t\t - If proof is not in English or French, travelers must secure a certified translation \n" +
-				"\t\t in English or French. Translation must include the stamp or membership number \n" +
-				"\t\t of a professional translation association.\n" +
+				"\t\t   in English or French. Translation must include the stamp or membership number \n" +
+				"\t\t   of a professional translation association.\n" +
 				"\t - COVID-19 Negative Molecular Test Result OR\n" +
 				"\t\t - proof of a previous positive test result taken between 10 and 180 days ago\n" +
 				"\t\t - proof must include the following information\n" +
@@ -264,11 +265,14 @@ public class ConsoleUI {
 				"\t\t\t - Name and civic address of the laboratory/clinic/facility that administered the test\n" +
 				"\t\t\t - The date on which the test was taken\n" +
 				"\t\t\t - The type of test taken\n" +
-				"\t\t\t - The test result" +
+				"\t\t\t - The test result\n" +
 				"\t - ArriveCan Receipt with letter I, or V, or A beside the traveler's name\n" +
-				"\t - Have a quarantine plan" +
+				"\t - Have a quarantine plan\n" +
 				"\t - Travel document that was entered in ArriveCan (i.e. passport)\n" +
 				"\t - Register in advance for arrival testing");
+
+		if(!isCanadian)
+			System.out.println("\t - Valid Canadian Visa");
 
 		System.out.println("Upon Arrival in Canada: \n" +
 				"\t - You may be randomly selected for a mandatory arrival test, \n" +
