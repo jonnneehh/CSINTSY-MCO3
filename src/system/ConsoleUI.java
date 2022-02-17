@@ -294,4 +294,32 @@ public class ConsoleUI {
 				"\t\t - monitor yourself for signs and symptoms\n" +
 				"\t\t - keep copies of your proof of vaccination and pre-arrival tests for 14 days");
 	}
+
+	public void printPositiveCOVIDTest(boolean wasPositive){
+
+		if(wasPositive == true){
+		System.out.println("Your steps for the next 14 days: \n"+
+				"\t - Don't attend school, camp, team sports or daycare\n" +
+				"\t - Don't attend large or crowded settings, indoors or outdoors, such as an amusement park or sporting event\n" +
+				"\t - Don't take buses, subways, trains or other crowded transportation\n" +
+				"\t - Don't attend a setting where you can have contact with (regardless of vaccination status): \n" +
+				"\t\t - Vulnerable people (e.g. long term care facility) \n" +
+				"\t\t - People who are immunocompromised \n" +
+				"\t - Stay in a place that allows you to avoid all contact with any person that: \n" +
+				"\t\t - has an underlying medical condition that makes the person susceptible to complications related to COVID-19 \n" +
+				"\t\t - has a compromised immune system from a medical condition or treatment; or \n" +
+				"\t\t - is 65 years of age or older \n" +
+				"\t - Limit contact with others \n" +
+				"\t - Remain with your fully vaccinated parent or guardian, as much as possible \n" +
+				"\t - Wear a mask and physically distance when in contact with non-household members");
+		}
+		else{
+			System.out.println("You are required to take the following tests: \n" +
+					"\t - Pre-entry Test\n" +
+					"\t - Arrival Test\n" +
+					"\t - Day-8 test");
+		}
+		
+	}
+
 }
