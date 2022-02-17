@@ -321,7 +321,7 @@ public class ConsoleUI {
 		}
 
 		if(age < 5){
-			System.out.println("You are EXEMPTED to take the following tests: \n" +
+			System.out.println("You are EXEMPTED from the following tests: \n" +
 					"\t - Pre-entry Test\n" +
 					"\t - Arrival Test\n" +
 					"\t - Day-8 test");
