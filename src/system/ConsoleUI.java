@@ -295,9 +295,9 @@ public class ConsoleUI {
 				"\t\t - keep copies of your proof of vaccination and pre-arrival tests for 14 days");
 	}
 
-	public void printPositiveCOVIDTest(boolean wasPositive){
+	public void printPositiveCOVIDTest(int age, boolean wasPositive){
 
-		if(wasPositive == true){
+		if(age < 18 && wasPositive == true){
 		System.out.println("Your steps for the next 14 days: \n"+
 				"\t - Don't attend school, camp, team sports or daycare\n" +
 				"\t - Don't attend large or crowded settings, indoors or outdoors, such as an amusement park or sporting event\n" +
@@ -313,13 +313,12 @@ public class ConsoleUI {
 				"\t - Remain with your fully vaccinated parent or guardian, as much as possible \n" +
 				"\t - Wear a mask and physically distance when in contact with non-household members");
 		}
-		else{
+		else if (age < 18){
 			System.out.println("You are required to take the following tests: \n" +
 					"\t - Pre-entry Test\n" +
 					"\t - Arrival Test\n" +
 					"\t - Day-8 test");
 		}
-		
 	}
 
 }
