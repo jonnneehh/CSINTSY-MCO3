@@ -321,7 +321,7 @@ public class ConsoleUI {
 				System.out.println("You are QUALIFIED to visit Canada");
 			} else
 				System.out.println("You are NOT QUALIFIED to visit Canada\n"
-						+ "Only exempted workers without a permit are allowed to visit Canada");
+						+ "Only exempted workers who are non-fully vaccinated or without a permit are allowed to visit Canada");
 		}
 	}
 

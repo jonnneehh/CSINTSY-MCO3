@@ -21,16 +21,19 @@ public class Main {
 		}
 		
 		String vaccine = c.askVaccineType(); //3
-		int doses = c.askNumOfDoses();//3a
+		int doses = 0, daysSinceDose = 0;
+		if(vaccine != "none") {
+			doses = c.askNumOfDoses();//3a
+			daysSinceDose = c.askDaysSinceLastDose(); //3b
+		}
 		
 		boolean noSymptoms = c.askIfNoSymptoms(); //4
-		int daysSinceDose = c.askDaysSinceLastDose(); //5
 		
-		boolean employedInCanada = c.askIsEmployedInCanada(); //6
+		boolean employedInCanada = c.askIsEmployedInCanada(); //5
 		boolean hasWorkPermit = false;
 		boolean isExemptedWorker = false;
 		if(employedInCanada) {
-			c.askHasWorkPermit(); //6a
+			c.askHasWorkPermit(); //5a
 			if(!hasWorkPermit) {
 				if(c.askIsEmergencyProvider()) {
 					isExemptedWorker = true;
