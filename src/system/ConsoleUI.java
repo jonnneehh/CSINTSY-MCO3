@@ -312,7 +312,7 @@ public class ConsoleUI {
 	private void printForeignWorker(boolean isCanadian, boolean isFullyVaccinated, boolean hasPermit,
 			boolean isExemptWorker) {
 
-		if (isFullyVaccinated && hasPermit) {
+		if (isFullyVaccinated) {
 			printFullyVaccinatedRequirements(isCanadian);
 			System.out.println("You are QUALIFIED to visit Canada");
 		} else {
